@@ -1,0 +1,2 @@
+# kk-brokers
+KK Brockers is an interactive software platform designed for connecting the lessors and their renters. For lessors, KK Brockers helps them advertise their properties and grow their business by capitalizing on the power of digital word-of-mouth. For renters, KK Brockers improves their overall experience of getting to properties they would want to rent, provides personalised services and information.
