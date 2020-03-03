@@ -1,0 +1,19 @@
+dist: bionic
+language: php
+php:
+  - 7.2
+services:
+  - postgresql
+cache:
+  directories:
+    - node_modules
+    - vendor
+before_script:
+  - cp .env.travis .env
+  - sudo psql -c 'create database kkbrokers_test;' -U postgres
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - php artisan key:generate
+  - php artisan migrate
+script:
+  - vendor/bin/phpunit
