@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('api', 'documentation\SampleController');
+
+Route::get('welcome', 'Welcome@welcome');
