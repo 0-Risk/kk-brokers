@@ -1,7 +1,10 @@
-dist: bionic
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d1237bdb71fba8562615d7a25ddac384cd4496ad1a757abfa8ec47cc34948ac1
+    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 language: php
 php:
-  - 7.2
+  - 7.3.0
 services:
   - postgresql
 cache:
@@ -13,7 +16,11 @@ before_script:
   - sudo psql -c 'create database kkbrokers_test;' -U postgres
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - php artisan key:generate
   - php artisan migrate
 script:
-  - vendor/bin/phpunit
+  - "vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml"
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build  -t clover --exit-code $TRAVIS_TEST_RESULT; fi

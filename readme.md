@@ -3,6 +3,8 @@
 
 <p align="center">
 <a href="https://travis-ci.com/0-Risk/kk-brokers-api"><img src="https://travis-ci.com/0-Risk/kk-brokers-api.svg?branch=dev" alt="Build Status" ></a>
+<a href="https://codeclimate.com/github/0-Risk/kk-brokers-api/maintainability"><img src="https://api.codeclimate.com/v1/badges/0d42f4b0b02a049bac21/maintainability" /></a>
+<a href="https://codeclimate.com/github/0-Risk/kk-brokers-api/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0d42f4b0b02a049bac21/test_coverage" /></a>
 </p>
 
 ## About KK-Brokers
