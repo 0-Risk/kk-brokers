@@ -65,9 +65,23 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+
             <div class="content">
-                <div class="title m-b-md">
-                    KK Brokers
+                <div class="links">
+                <p align="center"><a href="https://ibb.co/Yy7dSwP"><img src="https://i.ibb.co/0Fj9Lvm/logo.png" alt="logo" border="0" width="400"></a></p>
                 </div>
             </div>
         </div>
