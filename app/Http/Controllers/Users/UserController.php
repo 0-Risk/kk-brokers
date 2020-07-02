@@ -40,14 +40,10 @@ class UserController extends Controller {
                 'mobileno'=>$user->mobileno, 
                 'user_id'=>$user->id
             ];
-            try {
 
-                if (!$token = JWTAuth::claims($customlaims)->attempt($credentials)) {
-                    $validator->getMessageBag()->add('password', 'Wrong password');
-                    return response()->json($validator->errors(), 400);
-                }
-            } catch (JWTException $e) {
-                return response()->json(['error' => 'could_not_create_token'], 500);
+            if (!$token = JWTAuth::claims($customlaims)->attempt($credentials)) {
+                $validator->getMessageBag()->add('password', 'Wrong password');
+                return response()->json($validator->errors(), 400);
             }
             $generatedToken = [
                 'success' => true,
@@ -57,16 +53,11 @@ class UserController extends Controller {
             return response()->json($generatedToken, 200);
 
         }else{
-            try {
 
-                if (!$token = JWTAuth::attempt($credentials)) {
-                    $validator->getMessageBag()->add('mobileno', 'Phone Number does not exist');
-                    return response()->json($validator->errors(), 400);
-                }
-            } catch (JWTException $e) {
-                return response()->json(['error' => 'could_not_create_token'], 500);
+            if (!$token = JWTAuth::attempt($credentials)) {
+                $validator->getMessageBag()->add('mobileno', 'Phone Number does not exist');
+                return response()->json($validator->errors(), 400);
             }
-
         }
     }
 
@@ -126,7 +117,6 @@ class UserController extends Controller {
         } catch ( Tymon\JWTAuth\Exceptions\JWTException $e ) {
 
             return response()->json( ['token_absent'], $e->getStatusCode() );
-
         }
 
         return response()->json( compact( 'user' ) );
