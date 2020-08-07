@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('oauth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('oauth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
