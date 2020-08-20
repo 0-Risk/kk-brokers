@@ -43,8 +43,7 @@ class createDefaultAdmin extends Command
 
         //CREATING DEFAULT ADMIN INTO THE SYSTEM
         $user =  User::create([
-            'firstname' => ucfirst('admin'),
-            'lastname' => ucfirst('admin'),
+            'name' => ucfirst('admin'),
             'mobileno' => '700000000',
             'email' => 'admin@kk.com',
             'password' => Hash::make('password'),

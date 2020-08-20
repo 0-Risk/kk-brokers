@@ -43,8 +43,7 @@
                             <thead>
                                 <tr>
                                 <th>No</th>
-                                <th>First Name</th>
-                                <th>LastName</th>
+                                <th>Name</th>
                                 <th>Mobile No</th>
                                 <th>Created On</th>
                                 <th>Status</th>
@@ -55,8 +54,7 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $user->firstname }}</td>
-                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->name }}</td>
                                     <td>{{ $user->mobileno }}</td>
                                     <td>{{ date('d-M-Y', strtotime($user->created_at))}}</td>
                                     <td>

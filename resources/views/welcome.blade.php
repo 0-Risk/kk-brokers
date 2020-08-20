@@ -3,10 +3,7 @@
 @section('content')
 <div class="container">
     <div class="title-logo">
-        <p style="text-align:center">
-            <img src="{{ asset('images/rentals_logo2.png') }}"/>
-        </p>
-        <h4 style="text-align: center;">KK Blockers</h4>
+    <p align="center"><a href="https://ibb.co/Yy7dSwP"><img src="https://i.ibb.co/0Fj9Lvm/logo.png" alt="logo" border="0" width="400"></a></p>
     </div>
     <br>
     <div class="row justify-content-center">
@@ -67,6 +64,9 @@
                             </div>
                         </div>
 
+            <div class="content">
+                <div class="links">
+               
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

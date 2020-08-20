@@ -35,3 +35,8 @@ Route::group(['middleware' => ['role:Administrator']], function() {
     Route::post('client/update', 'Users\UserController@updateClient')->name('create.client.update');
     Route::get('activity-logs', 'Log\ActivityLogController@index')->name('system.log');
 });
+Route::get('oauth/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('oauth/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
