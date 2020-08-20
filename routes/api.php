@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('v1/register', 'Users\UserController@register');
+Route::post('v1/authenticate', 'Users\UserController@authenticate');
+Route::get('v1/open', 'TestData\DataController@open');
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('v1/user', 'Users\UserController@getAuthenticatedUser');
+    Route::get('v1/closed', 'TestData\DataController@closed');
 });
